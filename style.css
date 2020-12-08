@@ -1,0 +1,63 @@
+:root {
+    --transicionPrincipal: all 0.3s linear;
+    --rojo: #CD2424;
+    --negro: #222;
+    --blanco: #fff;
+    --gris: #ececec;
+    --espacio: 0.1rem;
+    --violeta: #270570;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    color: var(--negro);
+    background-color: var(--blanco);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16.18px;
+}
+
+.navbar {
+    background-color: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 9rem;
+
+    
+}
+
+.navbar p {
+    color: #fff;
+    font-size: 3rem;
+}
+
+.main {
+    background-color: rgb(231, 231, 231);
+    height: 40rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main__vuelos {
+    background-color: var(--violeta);
+    height: 25rem;
+    width: 90%;
+    color: var(--blanco);
+    border-radius: 1rem;
+
+
+}
+
+.main__vuelos__title{
+    font-size: 2rem;
+}
+
+.main__vuelos__subtitle{
+    font-size: 1rem;
+}
