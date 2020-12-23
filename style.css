@@ -42,14 +42,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 .main__vuelos {
     background-color: var(--violeta);
     height: 25rem;
-    width: 90%;
+    width: 75%;
     color: var(--blanco);
     border-radius: 1rem;
+    padding: 3rem;
 
 
 }
@@ -61,3 +63,40 @@ body {
 .main__vuelos__subtitle{
     font-size: 1rem;
 }
+
+
+.input-form {
+    width: 100%;
+
+}
+
+.input-form input {
+    border-radius: 6px;
+    font-weight: 500;
+    height: 48px;
+    
+}
+
+input.btn-buscar{
+    height: 48px;
+    padding: 0 40px;
+    line-height: 48px;
+    font-weight: 700;
+    background-color: #FA503f;
+    border-radius: 24px;
+    font-size: 18px;
+    color: white;
+    border: none;
+
+}
+button, input, optgroup, select, textarea {
+
+    font-weight: 500; 
+    padding-left: 1rem;
+}
+
+.input-form-container{
+
+    
+}
+    
