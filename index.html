@@ -4,16 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aerolineas JS</title>
-    <script src="script.js"></script>
-    
-    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    
-    
-    <link rel="stylesheet" href="style.css">
+  
     <script src="https://kit.fontawesome.com/ac73fb6b39.js" crossorigin="anonymous"></script>
-
+    <script src="jquery-3.5.1.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     
@@ -34,10 +30,10 @@
             <div>
 
                 <br>
-                <input type="radio"  id="Ida y vuelta" value="Ida y vuelta">
+                <input type="radio"  id="Ida y vuelta" value="Ida y vuelta" name="tipodeviaje" onclick="radio(0)">
                 <label for="Ida y vuelta">Ida y vuelta</label>
                 
-                <input type="radio" id="Solo ida" value="Solo ida">
+                <input type="radio" id="Solo ida" value="Solo ida" name="tipodeviaje" onclick="radio(1)">
                 <label for="Solo ida">Solo ida</label>  
                   
                 <br>        
@@ -48,15 +44,25 @@
                         <div class="input-form-container">
 
 
-                <input type="text" placeholder="Origen">
-                <input type="text" placeholder="Destino">
+                <input type="text" id="origen" placeholder="Origen">
+                <!--<div id="matchList"></div>-->
                 
-                <input type="date" placeholder="Ida">
+   
+
+                <input type="text" id="destino" placeholder="Destino">
                 
-                <input type="date" placeholder="Vuelta">
+                <input type="date" id="ida" placeholder="Ida">
+                
+                <input type="date" id="vuelta" placeholder="Vuelta">
                 <input type="number" placeholder="Pasajeros">
-                <input type="text" placeholder="Clase">
-                <input type="submit" value="Buscar" class="btn-buscar"></button>
+                <select name="Clase" id="">
+                    <option disabled selected>Clase</option>
+                    <option value="">Economica</option>
+                    <option value="">Premium Economy</option>
+                    <option value="">Ejecutiva</option>
+                    <option value="">Primera Clase</option>
+                </select>
+                <input type="submit" value="Buscar" id="search" class="btn-buscar" onclick="buscar()"></button>
                         </div>
                     </div>
 
@@ -76,10 +82,6 @@
 
 
 
-
-
-
-
 </section>
 
 
@@ -88,10 +90,6 @@
 
 
 
-
-
-
-
-    
+<script src="script.js"></script>
 </body>
 </html>

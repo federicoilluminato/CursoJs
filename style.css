@@ -77,6 +77,15 @@ body {
     
 }
 
+.input-form select {
+    border-radius: 6px;
+    font-weight: 500;
+    height: 48px;
+    width: 150px;
+    
+}
+
+
 input.btn-buscar{
     height: 48px;
     padding: 0 40px;
@@ -99,4 +108,4 @@ button, input, optgroup, select, textarea {
 
     
 }
-    
+
