@@ -42,6 +42,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
     
 }
 
@@ -108,4 +109,88 @@ button, input, optgroup, select, textarea {
 
     
 }
+
+
+
+.section_vuelos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(231, 231, 231);
+    
+}
+
+
+.container_vuelos {
+    border: 1px solid #555
+}
+
+.redes {
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    font-size: 2rem;
+    width: 30%; 
+}
+
+.redes li:hover{
+    color:#777;
+    cursor: pointer;
+}
+
+.redes-container {
+    display: flex;
+    justify-content: center;
+}
+
+.footer{
+    background-color: #333333;
+    color: white;
+    border: 3px solid #111;
+}
+
+.texto-footer{
+    font-size: 0.9rem;
+    margin-top: 3rem;
+}
+
+.linea {
+    display: flex;
+    justify-content: center;
+}
+
+.footer-devo{
+    border: 3px solid #777;
+    border-radius: 9px;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.footer-devo p{
+    padding-left: 60px;
+    margin-top: 1rem;
+}
+
+.footer-devo p:nth-child(1){
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.footer-devo p:nth-child(3){
+    cursor: pointer;
+}
+
+.footer-devo p:nth-child(3):hover{
+    color: #777;
+}
+
+.footer-devo i{
+    font-size: 2rem;
+    position: absolute;
+    padding-top: 10px;
+}
+
+
 
