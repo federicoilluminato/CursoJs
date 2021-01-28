@@ -2,11 +2,11 @@
 const datoOrigen = document.getElementById("origen").value.toLowerCase();
 const datoDestino = document.getElementById("destino").value.toLowerCase();
 const datoIda = document.getElementById("ida").value.toLowerCase().toString();
-const datoVuelta = document.getElementById("vuelta").value.toLowerCase();
+const datoVuelta = document.getElementById("vuelta").value.toLowerCase().toString();
 
 //Variables datos ingresados convertidos
-const datoIdaConvertido = datoIda.substring(8,10) + '/' + datoIda.substring(5,7) + '/' + datoIda.substring(0,4);
-const datoVueltaConvertido = datoVuelta.substring(8,10) + '/' + datoVuelta.substring(5,7) + '/' + datoVuelta.substring(0,4);
+// const datoIdaConvertido = datoIda.substring(8,10) + '/' + datoIda.substring(5,7) + '/' + datoIda.substring(0,4);
+// const datoVueltaConvertido = datoVuelta.substring(8,10) + '/' + datoVuelta.substring(5,7) + '/' + datoVuelta.substring(0,4);
 
 var search = document.getElementById('search');
 const resultado = document.querySelector('#resultado');
@@ -21,12 +21,12 @@ const datosBusqueda = {
     // : '',
 }
 
+
 //Events
 search.addEventListener('click', function() {
     filtrarVuelos();
-    // mostrarVuelos();
-    //  console.log(datosBusqueda);
-    // filtrarVuelos(datosBusqueda); 
+    console.log(datosBusqueda)
+
 })
 
 origen.addEventListener('change', e => {
@@ -53,7 +53,7 @@ vuelta.addEventListener('change', e => {
 
 //Funciones
 
-function mostrarVuelos () {
+function mostrarVuelos (vuelos) {
 
     limpiarHTML();
     vuelos.forEach(vuelo => {
@@ -81,14 +81,16 @@ function limpiarHTML () {
 //Funcion que filtra en base a la busqueda
 
 function filtrarVuelos() {
-    const resultado = vuelos.filter( filtrarOrigen ).filter( filtrarDestino ).filter( filtrarIda ).filter( filtrarVuelta);
-
-    console.log(resultado);
+    const vuelosResultado = vuelos.filter( filtrarOrigen ).filter( filtrarDestino ).filter( filtrarIdayVuelta );
+    // .filter( filtrarIda ).filter( filtrarVuelta);
     
-    mostrarVuelos(resultado);
+    console.log(vuelosResultado);
+    
+    
+    mostrarVuelos(vuelosResultado);
 
-    if( resultado.length ){
-        mostrarVuelos(resultado);
+    if( vuelosResultado.length ){
+        mostrarVuelos(vuelosResultado);
     } else {
         console.log('no hay resultado');
     }
@@ -112,20 +114,35 @@ function filtrarDestino(vuelo){
     return vuelo;
 }
 
-function filtrarIda (vuelo){
-    const { ida } = datosBusqueda;
-    if ( ida ){
-        return vuelo.fecha === ida;
-    }
-    return vuelo;
-}
+// function filtrarIda (vuelo){
+//     const { ida } = datosBusqueda;
+//     if ( ida ){
+//         return vuelo.fecha == ida;
+//     }
+//     return vuelo;
+// }
 
-function filtrarVuelta (vuelo){
-    const { vuelta } = datosBusqueda;
-    if ( vuelta ){
-        return vuelo.fecha === vuelta;
-    }
-    return vuelo;
+// function filtrarVuelta (vuelo){
+//     const { vuelta } = datosBusqueda;
+//     if ( vuelta ){
+//         return vuelo.fecha === vuelta;
+//     }
+//     return vuelo;
+// }
+
+function filtrarIdayVuelta (vuelo){
+    const { ida, vuelta } = datosBusqueda;
+    if ( ida || vuelta ){
+        return vuelo.fecha == ida || vuelta;
+    } return vuelo;
+    
+    
+    
+    
+    // if ( ida ){
+    //     return vuelo.fecha == ida;
+    // }
+    // return vuelo;
 }
 
 
