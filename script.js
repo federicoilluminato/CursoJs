@@ -20,7 +20,7 @@ const datosBusqueda = {
     // : '',
     // : '',
 }
-
+mostrarVuelos(vuelos);
 
 //Events
 search.addEventListener('click', function() {
@@ -81,14 +81,11 @@ function limpiarHTML () {
 //Funcion que filtra en base a la busqueda
 
 function filtrarVuelos() {
-    const vuelosResultado = vuelos.filter( filtrarOrigen ).filter( filtrarDestino ).filter( filtrarIdayVuelta );
-    // .filter( filtrarIda ).filter( filtrarVuelta);
-    
-    console.log(vuelosResultado);
-    
+    const vuelosResultado = vuelos.filter( filtrarOrigen ).filter( filtrarDestino ).filter( filtrarIda ).filter( filtrarVuelta);
+      
     
     mostrarVuelos(vuelosResultado);
-
+    
     if( vuelosResultado.length ){
         mostrarVuelos(vuelosResultado);
     } else {
@@ -97,52 +94,37 @@ function filtrarVuelos() {
 }
 
 
-
-function filtrarOrigen(vuelo){
+    function filtrarOrigen(vuelo){
     const { origen } = datosBusqueda;
     if( origen ){
-        return vuelo.origen === origen;
+        return vuelo.origen == origen;
     }
     return vuelo;
-}
-
-function filtrarDestino(vuelo){
-    const { destino } = datosBusqueda;
-    if( destino ){
-        return vuelo.destino === destino;
     }
-    return vuelo;
-}
 
-// function filtrarIda (vuelo){
-//     const { ida } = datosBusqueda;
-//     if ( ida ){
-//         return vuelo.fecha == ida;
-//     }
-//     return vuelo;
-// }
 
-// function filtrarVuelta (vuelo){
-//     const { vuelta } = datosBusqueda;
-//     if ( vuelta ){
-//         return vuelo.fecha === vuelta;
-//     }
-//     return vuelo;
-// }
+    function filtrarDestino(vuelo){
+        const { destino } = datosBusqueda;
+        if( destino ){
+            return vuelo.destino == destino;
+        }
+        return vuelo;
+    }
 
-function filtrarIdayVuelta (vuelo){
-    const { ida, vuelta } = datosBusqueda;
-    if ( ida || vuelta ){
-        return vuelo.fecha == ida || vuelta;
-    } return vuelo;
-    
-    
-    
-    
-    // if ( ida ){
-    //     return vuelo.fecha == ida;
-    // }
-    // return vuelo;
-}
+    function filtrarIda(vuelo){
+        const { ida } = datosBusqueda;
+        if ( ida ){
+            return vuelo.fecha == ida
+        }
+        return vuelo;
+    }
+
+    function filtrarVuelta(vuelo){
+        const { vuelta } = datosBusqueda;
+        if ( vuelta ){
+            return vuelo.fecha == vuelta;
+        }
+        return vuelo;
+    }
 
 
