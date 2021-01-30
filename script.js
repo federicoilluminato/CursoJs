@@ -76,12 +76,70 @@ function limpiarHTML () {
     }
 }
 
-function imprimirVuelos(){
+
+function imprimirVuelos(vuelosIda, vuelosVuelta){
     limpiarHTML();
-    const vueloHTML = document.createElement('div');
+    const vuelosSalen = document.createElement('div');
+    const vuelosVuelven = document.createElement('div');
+    vuelosSalen.innerHTML = '<p>Pasajes de ida:</p>';
+    vuelosVuelven.innerHTML = '<p>Pasajes de vuelta:</p>';
+
+    
+    
+    // console.log(vuelosIda);
+    // console.log(vuelosVuelta);
+    console.log(vuelosIdaYVuelta)
+    
+
+    if(vuelosIdaYVuelta.length == 2){
+    vuelosSalen.innerHTML = '<p>Pasajes ida y vuelta:</p>';
+    for (var i = 0; i < vuelosIdaYVuelta.length; i++){
+        
+        tabla =   `
+        
+        <p>${vuelosIdaYVuelta[i].origen}</p>
+        <p>${vuelosIdaYVuelta[i].destino}</p>
+        <p>${vuelosIdaYVuelta[i].fecha}</p>
+        <p>${vuelosIdaYVuelta[i].precio}</p>
+        
+        `;
 
 
+        vuelosSalen.innerHTML += tabla;
+        vuelosVuelven.innerHTML = '';
+        
+    }
 }
+else if(vuelosIdaYVuelta.length != 2){   
+    for (var i = 0; i < vuelosIda.length; i++){
+    tabla =   `
+        
+              <p>${vuelosIda[i].origen}</p>
+              <p>${vuelosIda[i].destino}</p>
+              <p>${vuelosIda[i].fecha}</p>
+              <p>${vuelosIda[i].precio}</p>
+                                        
+               `
+    vuelosSalen.innerHTML += tabla;                         
+    }
+    
+    for (var i =0; i < vuelosVuelta.length; i++){
+    tabla =  `
+             <p>${vuelosVuelta[i].origen}</p>
+             <p>${vuelosVuelta[i].destino}</p>
+             <p>${vuelosVuelta[i].fecha}</p>
+             <p>${vuelosVuelta[i].precio}</p>                      
+    
+              `
+    vuelosVuelven.innerHTML += tabla;
+    }                     
+    }
+    resultado.appendChild(vuelosSalen);
+    resultado.appendChild(vuelosVuelven);
+    
+}
+
+
 
 //Funcion que filtra en base a la busqueda
 
@@ -89,23 +147,18 @@ function filtrarVuelos() {
     
     const vuelosIdaResultado = vuelos.filter(filtrarOrigen).filter(filtrarDestino).filter(filtrarIda);
     const vuelosVueltaResultado = vuelos.filter(filtrarOrigenVuelta).filter(filtrarDestinoVuelta).filter(filtrarVuelta);
+
+    const vuelosIda = vuelosIdaResultado.concat();
+    const vuelosVuelta = vuelosVueltaResultado.concat();
     
-    vuelosIda.push(vuelosIdaResultado);
-    vuelosVuelta.push(vuelosVueltaResultado);
-    DobleVuelo();
-    imprimirVuelos();
+    if(vuelosIda.length == 1 && vuelosVuelta.length == 1){
+        // vuelosIdaYVuelta.concat(vuelosVuelta,vuelosIda);
+         vuelosIdaYVuelta = [...vuelosIda,...vuelosVuelta];
+    }
+    
+    imprimirVuelos(vuelosIda,vuelosVuelta,vuelosIdaYVuelta);
 }
 
-function DobleVuelo(){
-    
-    if (vuelosIda[0].length == 1 && vuelosVuelta[0].length == 1){
-        vuelosIdaYVuelta = [...vuelosIda,...vuelosVuelta];
-        console.log(vuelosIdaYVuelta);
-    }
-    //  console.log(vuelosIda[0].length);
-     console.log(vuelosIda);
-     console.log(vuelosVuelta);
-    }
 
 
     
