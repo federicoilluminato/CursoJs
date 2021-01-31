@@ -3,6 +3,9 @@ const datoOrigen = document.getElementById("origen").value.toLowerCase();
 const datoDestino = document.getElementById("destino").value.toLowerCase();
 const datoIda = document.getElementById("ida").value.toLowerCase().toString();
 const datoVuelta = document.getElementById("vuelta").value.toLowerCase().toString();
+const btnIdaYVuelta = document.querySelector('#Ida-y-vuelta');
+const btnSoloIda = document.querySelector('#Solo-ida');
+const clase = document.querySelector('#clase');
 
 //Variables datos ingresados convertidos
 // const datoIdaConvertido = datoIda.substring(8,10) + '/' + datoIda.substring(5,7) + '/' + datoIda.substring(0,4);
@@ -20,7 +23,7 @@ const datosBusqueda = {
     destino: '',
     ida: '',
     vuelta: '',
-    // : '',
+    precio : '',
     // : '',
 }
 mostrarVuelos(vuelos);
@@ -53,6 +56,27 @@ vuelta.addEventListener('change', e => {
 
 })
 
+clase.addEventListener('change', e =>{
+    datosBusqueda.precio = e.target.value;
+    // console.log(datosBusqueda.precio);
+})
+
+//radiobtns
+
+btnIdaYVuelta.addEventListener('change', e =>{
+    if (btnIdaYVuelta.checked){
+        document.getElementById('vuelta').classList.remove('disabled')
+    }
+})
+
+btnSoloIda.addEventListener('change', e => {
+    if (btnSoloIda.checked){
+        document.getElementById('vuelta').classList.add('disabled')
+        datosBusqueda.vuelta = '';
+        vuelta.value = '';
+    }
+})
+
 
 //Funciones
 
@@ -81,27 +105,60 @@ function imprimirVuelos(vuelosIda, vuelosVuelta){
     limpiarHTML();
     const vuelosSalen = document.createElement('div');
     const vuelosVuelven = document.createElement('div');
-    vuelosSalen.innerHTML = '<p>Pasajes de ida:</p>';
-    vuelosVuelven.innerHTML = '<p>Pasajes de vuelta:</p>';
+    vuelosSalen.innerHTML = '<p class="resultado-titulo">Pasajes de ida</p>';
+    vuelosVuelven.innerHTML = '<p class="resultado-titulo">Pasajes de vuelta</p>';
+    const precioSeleccionado = clase.value;
 
     
     
-    // console.log(vuelosIda);
-    // console.log(vuelosVuelta);
-    console.log(vuelosIdaYVuelta)
+    console.log(vuelosIda);
+    console.log(vuelosVuelta);
+    console.log(vuelosIdaYVuelta);
+    console.log(datosBusqueda.vuelta.value);
     
 
-    if(vuelosIdaYVuelta.length == 2){
-    vuelosSalen.innerHTML = '<p>Pasajes ida y vuelta:</p>';
+if(vuelosIda.length === 0 && vuelosVuelta.length === 0){
+    vuelosVuelven.innerHTML = '';
+    vuelosSalen.innerHTML = '<p class="resultado-titulo resultado-titulo-negativo">No se encontraron vuelos</p>';   
+}
+
+
+
+else if(datosBusqueda.vuelta.value === undefined && btnSoloIda.checked === true){
+    
+        for (var i = 0; i < vuelosIda.length; i++){
+    
+            tabla =   `
+                            <div class="resultados-container">
+                            <div class="container-destinos">
+                      <p><i class="fas fa-plane-departure"></i>${vuelosIda[i].origen}</p><hr></hr>
+                      <p><i class="fas fa-plane-arrival"></i>${vuelosIda[i].destino}</p>
+                            </div>
+                            <div class="resultados-fechaprecio">
+                      <p>${vuelosIda[i].fecha}</p>
+                      <p>${vuelosIda[i].precio[precioSeleccionado]}</p>
+                            </div>                   
+                            </div>                   
+                       `
+            vuelosSalen.innerHTML += tabla;
+            vuelosVuelven.innerHTML = '';                   
+    }}    
+
+else if(vuelosIdaYVuelta.length == 2){
+    vuelosSalen.innerHTML = '<p class="resultado-titulo">Pasajes ida y vuelta</p>';
     for (var i = 0; i < vuelosIdaYVuelta.length; i++){
         
         tabla =   `
-        
-        <p>${vuelosIdaYVuelta[i].origen}</p>
-        <p>${vuelosIdaYVuelta[i].destino}</p>
+        <div class="resultados-container">    
+            <div class="container-destinos">
+        <p><i class="fas fa-plane-departure"></i>${vuelosIdaYVuelta[i].origen}</p><hr></hr>
+        <p><i class="fas fa-plane-arrival"></i>${vuelosIdaYVuelta[i].destino}</p>
+            </div>
+            <div class="resultados-fechaprecio">
         <p>${vuelosIdaYVuelta[i].fecha}</p>
-        <p>${vuelosIdaYVuelta[i].precio}</p>
-        
+        <p>${vuelosIdaYVuelta[i].precio[precioSeleccionado]}</p>
+        </div>   
+        </div>   
         `;
 
 
@@ -110,32 +167,44 @@ function imprimirVuelos(vuelosIda, vuelosVuelta){
         
     }
 }
-else if(vuelosIdaYVuelta.length != 2){   
+else if(vuelosIdaYVuelta.length != 2){  
+    
     for (var i = 0; i < vuelosIda.length; i++){
+    
     tabla =   `
-        
-              <p>${vuelosIda[i].origen}</p>
-              <p>${vuelosIda[i].destino}</p>
+                    <div class="resultados-container">
+                    <div class="container-destinos">
+              <p><i class="fas fa-plane-departure"></i>${vuelosIda[i].origen}</p><hr></hr>
+              <p><i class="fas fa-plane-arrival"></i>${vuelosIda[i].destino}</p>
+                    </div>
+                    <div class="resultados-fechaprecio">
               <p>${vuelosIda[i].fecha}</p>
-              <p>${vuelosIda[i].precio}</p>
-                                        
+              <p>${vuelosIda[i].precio[precioSeleccionado]}</p>
+                    </div>                   
+                    </div>                   
                `
     vuelosSalen.innerHTML += tabla;                         
     }
     
     for (var i =0; i < vuelosVuelta.length; i++){
     tabla =  `
-             <p>${vuelosVuelta[i].origen}</p>
-             <p>${vuelosVuelta[i].destino}</p>
+                    <div class="resultados-container">
+                <div class="container-destinos">
+             <p><i class="fas fa-plane-departure"></i>${vuelosVuelta[i].origen}</p><hr></hr>
+             <p><i class="fas fa-plane-arrival"></i>${vuelosVuelta[i].destino}</p>
+                </div>
+                <div class="resultados-fechaprecio">
              <p>${vuelosVuelta[i].fecha}</p>
-             <p>${vuelosVuelta[i].precio}</p>                      
-    
+             <p>${vuelosVuelta[i].precio[precioSeleccionado]}</p>                      
+                    </div>
+                    </div>
               `
     vuelosVuelven.innerHTML += tabla;
     }                     
     }
     resultado.appendChild(vuelosSalen);
     resultado.appendChild(vuelosVuelven);
+    
     
 }
 

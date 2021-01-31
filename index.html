@@ -30,10 +30,10 @@
             <div>
 
                 <br>
-                <input type="radio"  id="Ida y vuelta" value="Ida y vuelta" name="tipodeviaje" onclick="radio(0)">
+                <input type="radio"  id="Ida-y-vuelta" value="Ida y vuelta" name="tipodeviaje">
                 <label for="Ida y vuelta">Ida y vuelta</label>
                 
-                <input type="radio" id="Solo ida" value="Solo ida" name="tipodeviaje" onclick="radio(1)">
+                <input type="radio" id="Solo-ida" value="Solo ida" name="tipodeviaje">
                 <label for="Solo ida">Solo ida</label>  
                   
                 <br>        
@@ -55,12 +55,12 @@
                 
                 <input type="date" id="vuelta" placeholder="Vuelta">
                 <input type="number" placeholder="Pasajeros">
-                <select name="Clase" id="">
-                    <option disabled selected>Clase</option>
-                    <option value="">Economica</option>
-                    <option value="">Premium Economy</option>
-                    <option value="">Ejecutiva</option>
-                    <option value="">Primera Clase</option>
+                <select name="Clase" id="clase">
+                    
+                    <option value="0">Economica</option>
+                    <option value="1">Premium Economy</option>
+                    <option value="2">Ejecutiva</option>
+                    <option value="3">Primera Clase</option>
                 </select>
                 <input type="submit" value="Buscar" id="search" class="btn-buscar" ></button>
                         </div>
@@ -131,5 +131,8 @@
 
 <script src='db.js'></script>
 <script src="script.js"></script>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Dosis&display=swap" rel="stylesheet">
 </body>
 </html>

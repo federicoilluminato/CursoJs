@@ -8,6 +8,8 @@
     --violeta: #270570;
 }
 
+
+
 * {
     margin: 0;
     padding: 0;
@@ -17,7 +19,7 @@
 body {
     color: var(--negro);
     background-color: var(--blanco);
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Dosis', sans-serif;
     font-size: 16.18px;
 }
 
@@ -53,7 +55,7 @@ body {
     color: var(--blanco);
     border-radius: 1rem;
     padding: 3rem;
-
+    box-shadow: 0 15px 25px rgba(0,0,0.9,0.9);
 
 }
 
@@ -121,9 +123,7 @@ button, input, optgroup, select, textarea {
 }
 
 
-.container_vuelos {
-    border: 1px solid #555
-}
+
 
 .redes {
     text-decoration: none;
@@ -190,6 +190,68 @@ button, input, optgroup, select, textarea {
     font-size: 2rem;
     position: absolute;
     padding-top: 10px;
+}
+
+.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.resultados-container{
+    display: flex;
+
+    margin: 30px;
+    padding: 30px;
+    border: 3px solid #333456;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+    transition: 0.5s;
+    background-color: #fff;
+}
+
+.resultado-container p {
+    color: #666;
+}
+
+.container-destinos{
+    display: flex;
+    flex-direction: column;
+    font-size: 1.3rem;
+}
+.container-destinos p{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.container-destinos i{
+    margin-right: 30px;
+}
+
+.resultado-titulo{
+    font-size: 3rem;
+    margin: 2rem;
+    text-align: center;
+    background-color: #270570;
+    color: white;
+    box-shadow: 0 15px 25px rgba(0,0,0.9,0.9);
+    border-radius: 20px;
+    padding: 24px;
+    font-family: 'Anton', sans-serif;
+    font-weight: 300;
+}
+
+.resultados-fechaprecio{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 36%;
+    margin: 3rem;
+    font-size: 1.2rem;
+}
+
+.resultado-titulo-negativo{
+    background-color: var(--rojo);
 }
 
 
