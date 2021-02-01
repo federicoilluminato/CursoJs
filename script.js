@@ -7,6 +7,7 @@ const btnIdaYVuelta = document.querySelector('#Ida-y-vuelta');
 const btnSoloIda = document.querySelector('#Solo-ida');
 const clase = document.querySelector('#clase');
 
+
 //Variables datos ingresados convertidos
 // const datoIdaConvertido = datoIda.substring(8,10) + '/' + datoIda.substring(5,7) + '/' + datoIda.substring(0,4);
 // const datoVueltaConvertido = datoVuelta.substring(8,10) + '/' + datoVuelta.substring(5,7) + '/' + datoVuelta.substring(0,4);
@@ -36,12 +37,12 @@ search.addEventListener('click', function() {
 })
 
 origen.addEventListener('change', e => {
-    datosBusqueda.origen = e.target.value
+    datosBusqueda.origen = e.target.value.trim().toLowerCase();
     // console.log(datosBusqueda.origen)
 
 })
 destino.addEventListener('change', e => {
-    datosBusqueda.destino = e.target.value
+    datosBusqueda.destino = e.target.value.trim().toLowerCase();
     // console.log(datosBusqueda.destino)
 
 })
@@ -136,8 +137,9 @@ else if(datosBusqueda.vuelta.value === undefined && btnSoloIda.checked === true)
                             </div>
                             <div class="resultados-fechaprecio">
                       <p>${vuelosIda[i].fecha}</p>
-                      <p>${vuelosIda[i].precio[precioSeleccionado]}</p>
-                            </div>                   
+                      <p class="precio">${vuelosIda[i].precio[precioSeleccionado]}</p>
+                      </div>                   
+                      <button class="resultados-btn" onclick='btnSelec()'>Seleccionar</button>
                             </div>                   
                        `
             vuelosSalen.innerHTML += tabla;
@@ -156,8 +158,9 @@ else if(vuelosIdaYVuelta.length == 2){
             </div>
             <div class="resultados-fechaprecio">
         <p>${vuelosIdaYVuelta[i].fecha}</p>
-        <p>${vuelosIdaYVuelta[i].precio[precioSeleccionado]}</p>
+        <p class="precio">${vuelosIdaYVuelta[i].precio[precioSeleccionado]}</p>
         </div>   
+        <button class="resultados-btn" onclick='btnSelec()'>Seleccionar</button> 
         </div>   
         `;
 
@@ -179,8 +182,9 @@ else if(vuelosIdaYVuelta.length != 2){
                     </div>
                     <div class="resultados-fechaprecio">
               <p>${vuelosIda[i].fecha}</p>
-              <p>${vuelosIda[i].precio[precioSeleccionado]}</p>
-                    </div>                   
+              <p class="precio">${vuelosIda[i].precio[precioSeleccionado]}</p>
+              </div>                   
+              <button class="resultados-btn" onclick='btnSelec()'>Seleccionar</button>
                     </div>                   
                `
     vuelosSalen.innerHTML += tabla;                         
@@ -195,8 +199,9 @@ else if(vuelosIdaYVuelta.length != 2){
                 </div>
                 <div class="resultados-fechaprecio">
              <p>${vuelosVuelta[i].fecha}</p>
-             <p>${vuelosVuelta[i].precio[precioSeleccionado]}</p>                      
-                    </div>
+             <p class="precio">${vuelosVuelta[i].precio[precioSeleccionado]}</p>
+             </div>
+             <button class="resultados-btn" onclick='btnSelec()'>Seleccionar</button>                      
                     </div>
               `
     vuelosVuelven.innerHTML += tabla;
@@ -208,8 +213,9 @@ else if(vuelosIdaYVuelta.length != 2){
     
 }
 
-
-
+const btnSelec = () => {
+    alert('Vuelo Seleccionado');
+}
 //Funcion que filtra en base a la busqueda
 
 function filtrarVuelos() {

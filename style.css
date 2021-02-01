@@ -254,5 +254,28 @@ button, input, optgroup, select, textarea {
     background-color: var(--rojo);
 }
 
+.resultados-btn{
+    color: white;
+    background-color: green;
+    margin-left: 15%;
+    border-radius: 20px;
+    border: 0px solid black;
+    height: 60px;
+    align-items: center;
+    padding: 12px;
+   
+}
+
+.resultados-container{
+    align-items: center;
+}
+
+.precio{
+    font-weight: 900;
+    margin-right: -60px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
 
 
